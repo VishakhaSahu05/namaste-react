@@ -1,0 +1,28 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste-React by Vishakha Sahu",
+  "scripts": {
+    "start" : "parcel index.html",
+    "build" : "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VishakhaSahu05/namaste-react.git"
+  },
+  "keywords": [],
+  "author": "Vishakha Sahu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VishakhaSahu05/namaste-react/issues"
+  },
+  "homepage": "https://github.com/VishakhaSahu05/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
