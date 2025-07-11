@@ -1,109 +1,210 @@
-/* App container */
-.app {
-  font-family: Arial, sans-serif;
+/* ====== Global Styles ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Header styling */
+body {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ====== Header ====== */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  background-color: #f8f8f8;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .logo {
-  height: 100px;
-  width: auto;
-  border-radius: 8px;
+  height: 50px;
 }
 
 .nav-items ul {
   display: flex;
-  list-style: none;
   gap: 24px;
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
+  list-style: none;
+  align-items: center;
 }
 
 .nav-items li {
+  font-size: 16px;
   cursor: pointer;
-  transition: color 0.3s;
 }
 
-.nav-items li:hover {
-  color: #007bff;
-}
-
-/* Body styling */
-.body {
-  padding: 24px 32px;
-}
-
-/* Search section */
-.search {
-  margin-bottom: 20px;
-  font-size: 20px;
+.login {
+  padding: 8px 16px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
   font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
-/* Restaurant container */
+.login:hover {
+  background-color: #d9363e;
+}
+
+/* ====== Body Section ====== */
+.body {
+  padding: 32px;
+}
+
+/* Filter and Search */
+.filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.search-box {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  width: 250px;
+  transition: box-shadow 0.2s ease;
+}
+
+.search-box:focus {
+  box-shadow: 0 0 4px rgba(255, 125, 0, 0.5);
+  border-color: #ff6600;
+}
+
+.filter-btn,
+.search-btn {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn {
+  background-color: #ff6600;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #e65c00;
+  transform: scale(1.03);
+}
+
+.filter-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.filter-btn:hover {
+  background-color: #d5d5d5;
+  transform: scale(1.03);
+}
+
+/* ====== Restaurant Cards ====== */
 .res-container {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
-}
-
-/* Restaurant Card styling */
-.res-card {
-  width: 250px;
-  height: 340px;
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 12px;
-  box-sizing: border-box;
-  text-align: center;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  gap: 24px;
   justify-content: flex-start;
-  align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover effect: background turns black */
+.res-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  width: 200px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
 .res-card:hover {
-  background-color: #000;
+  transform: translateY(-4px);
 }
 
-/* Text styling (inherits white color on hover) */
-.res-card h3,
-.res-card h4 {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.res-card:hover h3,
-.res-card:hover h4 {
-  color: #fff;
-}
-
-/* Image inside card */
-.res-logo {
+.res-card img {
   width: 100%;
   height: 140px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
+  border-radius: 10px;
 }
 
-/* Optional: zoom image slightly on hover */
-.res-card:hover .res-logo {
-  transform: scale(1.05);
+.res-card h3 {
+  font-size: 18px;
+  margin-top: 12px;
+}
+
+.res-card p {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #555;
+}
+
+/* ====== Shimmer Loader ====== */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 250px;
+  background: linear-gradient(
+    to right,
+    #eeeeee 0%,
+    #dddddd 20%,
+    #eeeeee 40%,
+    #eeeeee 100%
+  );
+  background-size: 800px 104px;
+  animation: shimmer 1.2s infinite linear;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
+
+/* ====== Responsive Fixes ====== */
+@media (max-width: 600px) {
+  .filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .res-card {
+    width: 100%;
+  }
+
+  .nav-items ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }

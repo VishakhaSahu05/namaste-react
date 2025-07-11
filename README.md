@@ -19,3 +19,19 @@
 - HTTPs
 - Tree Shaking Algorithm - remove unused code
 - Diffrent dev and prod bundles
+
+
+# LAYOUT
+/**
+ * Header
+ * - Logo
+ * - Nav items
+ * Body
+ * - Search
+ * - Reastraunt Card
+ * Footer
+ * - Copyright
+ * - Links
+ * - address
+ * - contact
+ */
