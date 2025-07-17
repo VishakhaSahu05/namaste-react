@@ -57,7 +57,7 @@ body {
   padding: 32px;
 }
 
-/* Filter and Search */
+/* ====== Filter and Search ====== */
 .filter {
   display: flex;
   align-items: center;
@@ -149,6 +149,71 @@ body {
   font-size: 14px;
   margin-top: 4px;
   color: #555;
+}
+
+/* ====== Menu Page ====== */
+.menu {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.menu h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.menu h3 {
+  font-size: 16px;
+  margin: 4px 0;
+  color: #555;
+  font-weight: 400;
+}
+
+.menu h2 {
+  margin-top: 30px;
+  font-size: 24px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.menu li {
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.menu li:hover {
+  background-color: #f0f0f0;
+}
+.user-card {
+  width: 300px;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s ease;
+  text-align: center;
+  margin: 16px auto;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
 }
 
 /* ====== Shimmer Loader ====== */
