@@ -2,34 +2,34 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Child constructor");
     this.state = {
-      count: 0,
-      count1: 2,
-    };
+      userInfo:{
+        name : "Dummy Name",
+        location : "Dummy Location",
+      },
+    },
+    console.log("Child-constructor" + this.props.name);
   }
-  componentDidMount(){
-    console.log("Child CDM");
+  async componentDidMount(){
+    const data = await fetch("https://api.github.com/users/VishakhaSahu05");
+    const json = await data.json();
+    console.log(json);
+    this.setState({
+      userInfo : json,
+    });
+   console.log("Child - componentDidMount" + this.props.name);
+
+  }
+  componentDidUpdate(){
+    console.log("Child - componentDidUpdate");
   }
   render() {
-    console.log("Child Render");
-    const { name } = this.props;
-    const { count, count1 } = this.state;
+    const { name, location, avatar_url } = this.state.userInfo;
     return (
       <div className="user-card">
-        <h1>Count:{count}</h1>
-        <button
-          onClick={() => {
-            //Never update state variable directly
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Count Increases
-        </button>
+        <img src = {avatar_url}/>
         <h2>Name:{name}</h2>
-        <h3>Location:Ranchi</h3>
+        <h3>Location:{location}</h3>
         <h4>Contact:@Vishakha05</h4>
       </div>
     );
