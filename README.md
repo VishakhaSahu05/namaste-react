@@ -35,3 +35,11 @@
  * - address
  * - contact
  */
+
+
+<!-- {itemCards.map((item, index) => (
+          <li key={`${item.card.info.id}-${index}`}>
+            {item.card.info.name} - ₹
+            {(item.card.info.price || item.card.info.defaultPrice) / 100}
+          </li>
+        ))} -->
