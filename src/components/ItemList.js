@@ -1,8 +1,13 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice.js";
 import { FOOD_URL } from "../utils/constants";
-
-const ItemList = ({ item }) => {
+const ItemList = ({ item , dummy }) => {
   if (!item || item.length === 0) return null;
-
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    //Dispatch an action
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {item.map((item) => (
@@ -32,7 +37,10 @@ const ItemList = ({ item }) => {
                 className="w-full h-auto rounded-md shadow"
               />
             )}
-            <button className="absolute bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm rounded-lg bg-black text-white shadow-md">
+            <button
+              className="absolute bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1 text-sm rounded-lg bg-black text-white shadow-md cursor-pointer"
+              onClick={()=>handleAddItem(item)}
+            >
               Add+
             </button>
           </div>

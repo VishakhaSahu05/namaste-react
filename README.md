@@ -36,10 +36,11 @@
  * - contact
  */
 
+# Redux ToolKit
+- install @reduxjs/toolkit
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch(action)
+- Selector
 
-<!-- {itemCards.map((item, index) => (
-          <li key={`${item.card.info.id}-${index}`}>
-            {item.card.info.name} - ₹
-            {(item.card.info.price || item.card.info.defaultPrice) / 100}
-          </li>
-        ))} -->

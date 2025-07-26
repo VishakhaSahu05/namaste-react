@@ -8,7 +8,9 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./components/UserContext";
-import { useState, useEffect } from "react";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 //import Grocery from "./components/Grocery";
 
 //chunking
@@ -30,17 +32,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    //Default
-    <UserContext.Provider value={{ loggedUser: userName,setUserName}}>
-      {/*Vishakha sahu */}
+    <Provider store={appStore}>
+    <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
       <div className="app">
-        <UserContext.Provider value={{ loggedUser: "Elon Musk" }}>
-          {/* Elon Musk */}
-          <Header />
-        </UserContext.Provider>
+        <Header />
         <Outlet />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
@@ -64,9 +63,14 @@ const appRouter = createBrowserRouter([
         path: "/grocery",
         element: <Grocery />,
       },
+      
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart/>,
       },
     ],
     errorElement: <Error />,
