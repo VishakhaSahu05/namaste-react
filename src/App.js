@@ -1,14 +1,15 @@
-import React , {lazy} from "react";
+import React, { lazy, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./components/UserContext";
+import { useState, useEffect } from "react";
 //import Grocery from "./components/Grocery";
-
 
 //chunking
 //lazy loading
@@ -16,16 +17,33 @@ import RestaurantMenu from "./components/RestaurantMenu";
 //Code spliting
 //On demand Loading
 
-const Grocery = lazy(()=> import("./components/Grocery"));
+const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
+  //authentication
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Vishakha Sahu",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    //Default
+    <UserContext.Provider value={{ loggedUser: userName,setUserName}}>
+      {/*Vishakha sahu */}
+      <div className="app">
+        <UserContext.Provider value={{ loggedUser: "Elon Musk" }}>
+          {/* Elon Musk */}
+          <Header />
+        </UserContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
-const  appRouter  = createBrowserRouter([
+const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
@@ -44,17 +62,16 @@ const  appRouter  = createBrowserRouter([
       },
       {
         path: "/grocery",
-        element: <Grocery/>,
+        element: <Grocery />,
       },
       {
-       path: "/restaurants/:resId",
-       element: <RestaurantMenu/>
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,
   },
 ]);
 
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router = {appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);

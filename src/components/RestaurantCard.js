@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { FOOD_URL } from "../utils/constants";
+import UserContext from "./UserContext";
 
 const Restaurantcard = (props) => {
   const { resData } = props;
+  const {loggedUser} = useContext(UserContext);
   const info = resData.info ? resData.info : resData;
 
   return (
@@ -16,6 +19,7 @@ const Restaurantcard = (props) => {
       <h4>{info.avgRating}</h4>
       <h4>{info.costForTwo}</h4>
       <h4>{info.sla?.deliveryTime} mins</h4>
+      <h4>User: {loggedUser}</h4>
     </div>
   );
 };

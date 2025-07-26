@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Restaurantcard, { withPromotedList } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "./UserContext";
 
 const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -36,6 +37,8 @@ const Body = () => {
     return (
       <h1>Looks Like youre offline !! Please check your Internet Connection</h1>
     );
+
+  const {loggedUser,setUserName} = useContext(UserContext);
 
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
@@ -73,6 +76,14 @@ const Body = () => {
           >
             Top Rated Restaurants
           </button>
+        </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>UserName</label>
+          <input
+            className="border border-black p-2"
+            value={loggedUser}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
         </div>
       </div>
 
